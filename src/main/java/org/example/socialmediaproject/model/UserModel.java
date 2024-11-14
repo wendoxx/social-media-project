@@ -10,11 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "tb_user")
 public class UserModel implements UserDetails {
 
     @Id
@@ -31,9 +32,9 @@ public class UserModel implements UserDetails {
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    private List<PostModel> post;
+    private Set<PostModel> post;
 
-    public UserModel(String username, String password, Role role, List<PostModel> post) {
+    public UserModel(String username, String password, Role role, Set<PostModel> post) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -51,12 +52,12 @@ public class UserModel implements UserDetails {
 
     @Override
     public String getPassword() {
-        return username;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return password;
+        return username;
     }
 
     @Override
