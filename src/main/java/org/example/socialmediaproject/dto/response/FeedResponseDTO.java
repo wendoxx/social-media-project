@@ -8,4 +8,7 @@ import java.util.List;
 @Data
 public class FeedResponseDTO {
     private List<PostModel> posts;
+
+    public FeedResponseDTO(PostModel postModel) {
+    }
 }
